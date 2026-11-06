@@ -29,7 +29,8 @@ df.columns = [
     "Município",
     "pop_2010_sinopse",
     "2010",  # população 2010 compatibilizada
-    "2022",  # Censo 2022
+    "2022",# Censo 2022
+   
 ]
 df.head()
 
@@ -80,3 +81,18 @@ print("População por município:")
 pop_municipio.to_csv("populacao_por_municipio.csv", index=False, encoding="utf-8-sig")
 print("Arquivo populacao_por_municipio.csv salvo.")
 
+st.dataframe(pop_municipio)
+
+fig = px.bar(
+    df, 
+    x = "2022", 
+    y = "UF",
+    color= "2010",
+    barmode="stack", 
+    orientation="h", 
+    color_continuous_scale='Viridis',
+    title="teste" 
+    
+)
+
+st.plotly_chart(fig, use_container_width=True)
